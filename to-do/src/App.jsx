@@ -1,9 +1,15 @@
-import { useState } from "react";
-import TaskForm from "./components/TaskForm";
-import TaskList from "./components/TaskList";
+import { useState, useEffect } from "react";
+import DashboardLayout from "./layouts/DashboardLayout";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const saved = localStorage.getItem("tasks");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   //   Agregar tarea
   const addTask = (task) => {
@@ -33,16 +39,13 @@ function App() {
   };
   return (
     <>
-      <div className="task-container">
-        <h1>Lista de Tareas</h1>
-        <TaskForm onAddTask={addTask} />
-        <TaskList
-          tasks={tasks}
-          onToggleComplete={onToggleComplete}
-          onDelete={deleteTask}
-          onEdit={editTask}
-        />
-      </div>
+      <DashboardLayout
+        tasks={tasks}
+        onAddTask={addTask}
+        onToggleComplete={onToggleComplete}
+        onEdit={editTask}
+        onDelete={deleteTask}
+      />
     </>
   );
 }

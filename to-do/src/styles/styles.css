@@ -1,0 +1,67 @@
+:root {
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    /* colores principales */
+    --primary-color: #F7A9A8;   /* Rosa salmón suave → usado en el logo, encabezados y acentos principales */
+    --secondary-color: #E8B27E; /* Beige dorado → usado en las tarjetas de tareas */
+  
+    /* colores neutros / base */
+    --background-color: #F8F5F2; /* Fondo claro (tipo crema) */
+    --text-color: #2D2D2D;       /* Texto principal (negro suave) */
+    --muted-color: #B4A7A0;      /* Texto secundario o placeholders */
+  
+    /* colores de acento / estado */
+    --success-color: #6BAF92;    /* Verde tenue (para estados completados) */
+    --highlight-color: #9C6C5C;  /* Marrón cálido, contraste elegante para hover o títulos */
+  
+    /* fondo de pantalla */
+    --surface-dark: #3E2F2B;     /* Fondo marrón oscuro de la maqueta */
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    margin: 0;
+  }
+  .dashboard-layout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;    
+    background-color: var(--background-color);
+    width: 95%;
+  }
+  .dashboard-top{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem; 
+    align-items: center;
+  }
+  .dashboard-stats{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  .dashboard-tasks{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  /* formularios input*/
+  .task-form input:focus, .task-form textarea:focus{
+    outline: none;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+  }
+  .task-form{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  .task-form input, .task-form textarea{
+    border: 1px solid var(--muted-color);
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+  }

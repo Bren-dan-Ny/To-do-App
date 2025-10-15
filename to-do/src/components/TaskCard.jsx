@@ -18,6 +18,24 @@ function TaskCard({ task, onToggleComplete, onDelete, onEdit }) {
     setIsEditing(!isEditing);
   };
 
+  const getFormattedDate = (dateString) => {
+    const date = new Date(dateString);
+    const now = new Date();
+
+    const isToday = date.toDateString() === now.toDateString();
+    const isYesterday =
+      date.toDateString() ===
+      new Date(now.setDate(now.getDate() - 1)).toDateString();
+
+    const time = date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    if (isToday) return `Hoy a las ${time}`;
+    if (isYesterday) return `Ayer a las ${time}`;
+    return date.toLocaleDateString() + " " + time;
+  };
   return (
     // inputs de edicion
     <li className={`task-card ${task.completed ? "completed" : ""}`}>
@@ -51,15 +69,26 @@ function TaskCard({ task, onToggleComplete, onDelete, onEdit }) {
           </>
         ) : (
           <>
+            {/* titulo */}
             <h3 className="task-title">{task.text}</h3>
-            {task.description && (
-              <h5 className="task-description">{task.description}</h5>
-            )}
-            {task.category && (
-              <span className="task-category-label">{task.category}</span>
-            )}
+
+            {/* description */}
+            <h5 className="task-description">
+              {task.description && task.description.trim() !== ""
+                ? task.description
+                : "Sin descripción"}
+            </h5>
+            {/* categoria y fecha */}
+            <span className="task-category-label">
+              {task.category && task.category.trim() !== ""
+                ? task.category
+                : "Sin categoría"}
+            </span>
+
             {task.createdAt && (
-              <span className="task-created">Creado el {task.createdAt}</span>
+              <span className="task-created">
+                Creado el {getFormattedDate(task.createdAt)}
+              </span>
             )}
           </>
         )}

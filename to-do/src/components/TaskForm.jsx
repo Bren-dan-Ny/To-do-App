@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/task.css";
+import { IoMdSend } from "react-icons/io";
 
 function TaskForm({ onAddTask }) {
   const [text, setText] = useState("");
@@ -17,10 +17,7 @@ function TaskForm({ onAddTask }) {
       description,
       category,
       completed: false,
-      createdAt: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
+      createdAt: new Date().toISOString(),
     };
 
     onAddTask(newTask);
@@ -38,6 +35,8 @@ function TaskForm({ onAddTask }) {
         placeholder="Escribe una tarea..."
       />
       <textarea
+        rows="1"
+        cols="30"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Descripción (opcional)"
@@ -54,7 +53,9 @@ function TaskForm({ onAddTask }) {
         <option value="urgent">Urgente</option>
         <option value="others">Otros</option>
       </select>
-      <button type="submit">Agregar Tarea</button>
+      <button type="submit">
+        <IoMdSend />
+      </button>
     </form>
   );
 }

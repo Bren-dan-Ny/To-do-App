@@ -1,6 +1,6 @@
 import TaskCard from "./TaskCard";
 
-function TaskList({ tasks, onToggleComplete, onDelete, onEdit }) {
+function TaskList({ tasks = [], onToggleComplete, onDelete, onEdit }) {
   return (
     <ul className="task-list">
       {tasks.length === 0 ? (
