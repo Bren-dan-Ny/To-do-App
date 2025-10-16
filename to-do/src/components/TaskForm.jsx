@@ -46,7 +46,7 @@ function TaskForm({ onAddTask }) {
         onChange={(e) => setCategory(e.target.value)}
         className="task-category"
       >
-        <option value="">Selecciona una categoría</option>
+        <option value="">Categoría</option>
         <option value="personal">Personal</option>
         <option value="work">Trabajo</option>
         <option value="studies">Estudios</option>

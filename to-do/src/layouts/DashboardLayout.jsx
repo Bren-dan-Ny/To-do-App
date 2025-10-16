@@ -37,7 +37,13 @@ function DashboardLayout({
             <h3 className="calendar-day">{weekday}</h3>
             <p className="calendar-date">{formattedDate}</p>
           </div>
-          <Calendar value={date} onChange={setDate} />
+          <Calendar
+            formatMonthYear={(locale, date) =>
+              date
+                .toLocaleDateString("es-ES", { month: "long" })
+                .replace(/^\w/, (c) => c.toUpperCase())
+            }
+          />
         </aside>
         <section className="dashboard-tasks">
           <TaskForm onAddTask={onAddTask} />
