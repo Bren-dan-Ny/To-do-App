@@ -32,7 +32,7 @@ function TaskForm({ onAddTask }) {
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Escribe una tarea..."
+        placeholder="Escribe una tarea"
       />
       <textarea
         rows="1"
