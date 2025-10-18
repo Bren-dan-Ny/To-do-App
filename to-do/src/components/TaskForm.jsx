@@ -47,11 +47,11 @@ function TaskForm({ onAddTask }) {
         className="task-category"
       >
         <option value="">Categoría</option>
-        <option value="personal">Personal</option>
-        <option value="work">Trabajo</option>
-        <option value="studies">Estudios</option>
-        <option value="urgent">Urgente</option>
-        <option value="others">Otros</option>
+        <option value="Personal">Personal</option>
+        <option value="Trabajo">Trabajo</option>
+        <option value="Estudios">Estudios</option>
+        <option value="Urgente">Urgente</option>
+        <option value="Otros">Otros</option>
       </select>
       <button type="submit">
         <IoMdSend />

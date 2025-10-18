@@ -1,21 +1,22 @@
 import { useState } from "react";
-import { FaRegCheckCircle, FaTrashAlt, FaEdit, FaSave } from "react-icons/fa";
+import { FaRegCheckCircle, FaTrashAlt, FaEdit } from "react-icons/fa";
+import { FaTasks } from "react-icons/fa";
 
 function TaskCard({ task, onToggleComplete, onDelete, onEdit }) {
-  const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(task.text);
   const [newDescription, setNewDescription] = useState(task.description || "");
   const [newCategory, setNewCategory] = useState(task.category || "");
+  const [showModal, setShowModal] = useState(false);
 
-  const handleEdit = () => {
-    if (isEditing && newText.trim() !== "") {
+  const handleSave = () => {
+    if (newText.trim() !== "") {
       onEdit(task.id, {
         text: newText,
         description: newDescription,
         category: newCategory,
       });
+      setShowModal(false);
     }
-    setIsEditing(!isEditing);
   };
 
   const getFormattedDate = (dateString) => {
@@ -36,12 +37,17 @@ function TaskCard({ task, onToggleComplete, onDelete, onEdit }) {
     if (isYesterday) return `Ayer a las ${time}`;
     return date.toLocaleDateString() + " " + time;
   };
+
   return (
-    // inputs de edicion
-    <li className={`task-card ${task.completed ? "completed" : ""}`}>
-      <div className="task-content">
-        {isEditing ? (
-          <>
+    <>
+      {showModal && (
+        <div className="modal-overlay" onClick={() => setShowModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="content-edit-task">
+              <FaTasks className="edit-task-modal-icon" />
+              <h3>Editar tarea</h3>
+            </div>
+
             <input
               type="text"
               value={newText}
@@ -59,64 +65,72 @@ function TaskCard({ task, onToggleComplete, onDelete, onEdit }) {
               onChange={(e) => setNewCategory(e.target.value)}
               className="task-category"
             >
-              <option value="personal">Personal</option>
-              <option value="work">Trabajo</option>
-              <option value="studies">Estudios</option>
-              <option value="urgent">Urgente</option>
-              <option value="others">Otros</option>
+              <option value="Personal">Personal</option>
+              <option value="Trabajo">Trabajo</option>
+              <option value="Estudios">Estudios</option>
+              <option value="Urgente">Urgente</option>
+              <option value="Otros">Otros</option>
             </select>
-          </>
-        ) : (
-          <>
-            {/* titulo */}
-            <h3 className="task-title">{task.text}</h3>
+            <div className="modal-actions">
+              <button
+                className="btn-cancel"
+                onClick={() => setShowModal(false)}
+              >
+                Cancelar
+              </button>
+              <button className="btn-save" onClick={handleSave}>
+                Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
-            {/* description */}
-            <h5 className="task-description">
-              {task.description && task.description.trim() !== ""
-                ? task.description
-                : "Sin descripción"}
-            </h5>
-            {/* categoria y fecha */}
-            <span className="task-category-label">
-              {task.category && task.category.trim() !== ""
-                ? task.category
-                : "Sin categoría"}
-            </span>
-
-            {task.createdAt && (
-              <span className="task-created">
-                Creado el {getFormattedDate(task.createdAt)}
+      <li className={`task-card ${task.completed ? "completed" : ""}`}>
+        <div className="container-card">
+          <div className="container-left">
+            <div className="task-info">
+              <h3 className="task-title">{task.text}</h3>
+              <span className="task-description">
+                {task.description && task.description.trim() !== ""
+                  ? task.description
+                  : "Sin descripción"}
               </span>
-            )}
-          </>
-        )}
-      </div>
+            </div>
+            <div className="task-meta">
+              <span className="task-category-label">
+                {task.category && task.category.trim() !== ""
+                  ? task.category
+                  : "Sin categoría"}
+              </span>
+              {task.createdAt && (
+                <span className="task-created">
+                  Creado: {getFormattedDate(task.createdAt)}
+                </span>
+              )}
+            </div>
+          </div>
 
-      {/* botones de accion */}
-      <div className="task-actions">
-        <button
-          onClick={() => onToggleComplete(task.id)}
-          title={
-            task.completed ? "Marcar como incompleta" : "Marcar como completada"
-          }
-        >
-          {task.completed ? (
-            <FaRegCheckCircle color="green" />
-          ) : (
-            <FaRegCheckCircle />
-          )}
-        </button>
+          <div className="container-right">
+            <div className="task-actions">
+              <button onClick={() => onToggleComplete(task.id)}>
+                <FaRegCheckCircle
+                  color={task.completed ? "green" : undefined}
+                />
+              </button>
 
-        <button onClick={handleEdit} title={isEditing ? "Guardar" : "Editar"}>
-          {isEditing ? <FaSave /> : <FaEdit />}
-        </button>
+              <button onClick={() => setShowModal(true)} title="Editar">
+                <FaEdit />
+              </button>
 
-        <button onClick={() => onDelete(task.id)} title="Eliminar">
-          <FaTrashAlt />
-        </button>
-      </div>
-    </li>
+              <button onClick={() => onDelete(task.id)} title="Eliminar">
+                <FaTrashAlt />
+              </button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </>
   );
 }
 
