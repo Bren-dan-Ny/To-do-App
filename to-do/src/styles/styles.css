@@ -11,13 +11,18 @@
     --background-color: #F8F5F2; /* Fondo claro (tipo crema) */
     --text-color: #2D2D2D;       /* Texto principal (negro suave) */
     --muted-color: #B4A7A0;      /* Texto secundario o placeholders */
-  
+    --orange-color:#F2B258;
     /* colores de acento / estado */
     --success-color: #6BAF92;    /* Verde tenue (para estados completados) */
     --highlight-color: #C4A49F;  /* Marrón cálido, contraste elegante para hover o títulos */
   
     /* fondo de pantalla */
     --surface-dark: #63605F;     /* Fondo marrón oscuro de la maqueta */
+  }
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   body {
     font-family: 'Roboto', sans-serif;
@@ -85,6 +90,7 @@
     }
 /* main content - welcome message */
     .msg-welcome {
+      margin: 2rem 0;
       font-family: 'Roboto', serif;
       font-size: 4rem;
       text-align: center;
@@ -95,20 +101,22 @@
   .dashboard-top {
     display: grid;
     grid-template-columns: 400px 1fr;
-    gap: 4rem;
+    gap: 3rem;
     padding: 0 3rem;
-    align-items:center;
+
   }
-  .dashboard-stats{
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    padding: 1rem;
-  }
+
   .dashboard-tasks{
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.5rem;
+  }
+
+  .task-controls{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
   }
   /* formularios input*/
   .task-form input:focus, .task-form textarea:focus{
@@ -117,17 +125,15 @@
     box-shadow: 0 0 5px var(--primary-color);
   }
   .task-form {
-    padding: 1rem 0;
-    border-radius: var(--radius);
     box-shadow: var(--shadow-soft);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.5rem;
-    flex: 1;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
   }
   .task-form input, .task-form textarea, .task-form select , .task-form button {
-
     border: 1px solid var(--muted-color);
     align-content: center;
     border-radius: 5px;
@@ -148,18 +154,58 @@
   background-repeat: no-repeat;
   background-position: right 0.8rem center;
   background-size: 1rem;
+  width: 180px;
 }
-  /* ul- lista de tareas */
-  .task-list {
-    display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* más flexible */
-  gap: 1.5rem;
-    justify-content: center;
-    align-content: start;
-    width: 100%;
-    padding: 0;
-    box-sizing: border-box;
+.search-bar {
+  position: relative;
+  width: 80%;
+  max-width: 200px;
+  margin-bottom:1rem;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 1rem; /* espacio para el icono a la derecha */
+  border-radius: 5px;
+  border: 2px solid var(--orange-color);
+  outline: none;
+  font-size: 0.8rem;
+  transition: border-color 0.2s ease;
+}
+
+.search-bar input:focus {
+  border-color: var(--primary-color);
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px; 
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-color);
+  pointer-events: none;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+.task-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 150px; /* alto real de cada tarjeta */
+  grid-auto-flow: row dense;
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 316px; /* Mantiene el alto del grid para evitar salto al filtrar tareas */
+}
+
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    color:var(--muted-color);
+    font-size: 1rem;
+    margin-top: 2rem;
   }
+  
   
   .task-card {
     background-color: var(--secondary-color);
@@ -167,14 +213,11 @@
     border-radius: 8px;
     transition: transform 0.3s ease, background-color 0.3s ease;
     width: 100%;
-    max-width: 400px;
     list-style: none;
     overflow: hidden;
-    box-sizing: border-box;
     display: flex;              
     flex-direction: column; 
-    justify-content: space-between; /* 🔹 reparte contenido verticalmente */
-    height: 100%;               /* 🔹 fuerza a ocupar todo el alto del grid */
+    justify-content: space-between;      
   }
   
 
@@ -212,25 +255,25 @@ gap: 1rem;
 .task-description {
   text-transform: capitalize;
 }
-.task-info{
+.task-info {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .task-title {
   font-size: 1.2rem;
   color: var(--text-color);
   font-weight: 600;
   font-family: 'Roboto', sans-serif;
-  overflow: hidden;           
-  text-overflow: ellipsis;    
-  display: -webkit-box;       /* ✅ necesario para cortar en varias líneas */
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;      /* ✅ cantidad de líneas visibles */
-  white-space: normal;        /* permite salto de línea antes del corte */
-  max-width: 100%;
+  width: 70%;
   margin: 0.5rem 0;
   box-sizing: border-box;
+  display: block;
 }
+
+
 .task-description {
   font-size: 0.9rem;
   color: var(--text-color);
@@ -241,6 +284,7 @@ gap: 1rem;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+
   word-wrap: break-word;      
   word-break: break-word;     
   hyphens: auto;              /* divide palabras con guión si aplica */
@@ -271,7 +315,7 @@ gap: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  margin-top: 0.5rem;
+
 }
 
 .task-actions button {
@@ -418,10 +462,9 @@ margin:0.8rem 0;
   aside {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem;
   }
   .calendar-day  {
-    margin: 0;
     font-weight: 400;
     font-size: 4rem;
     font-family: "Island Moments", cursive;
@@ -429,8 +472,7 @@ margin:0.8rem 0;
   }
   .calendar-date {
     color: var(--text-color);
-    font-size: 2.5rem;
-    margin : 0;
+    font-size:3rem;
     font-family: 'Abhaya Libre', serif;
     font-weight: 400;
   }
@@ -444,7 +486,7 @@ margin:0.8rem 0;
     padding: 1rem;
     font-family: 'Roboto', sans-serif;
     width: 100% !important;
-    height: 100% !important;
+
   }
 
 .react-calendar__navigation {
@@ -500,41 +542,38 @@ margin:0.8rem 0;
   background: var(--primary-color) !important;
 }
 
+
+
 /* Stats task */
 .dashboard-stats{
   display: flex;
+  align-items: center;
   flex-direction: row;
-  width: 100%;
+  padding: 0 3rem;
+  width: 100%; 
 }
 .container-stats-card {
-  display: grid;
-  grid-template-columns: auto 1fr; /* izquierda: tamaño fijo; derecha: ocupa el resto */
-  gap: 1.5rem;
-  align-items: stretch;
-  width: 100%;
-}
-
-/* grupo de la izquierda */
-.container-stats-completed-pending {
   display: flex;
-  flex-direction: row;
-  gap: 1rem;
-
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 /* estilos de las tarjetas */
 .stat-card {
-  background-color: var(--secondary-color);
-  border-radius: 2rem;
-  padding: 1rem;
+  border-radius: 1rem;
+  padding: 1rem 2.5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 180px;
-  height: 100%;
+  height: 150px;
   box-sizing: border-box;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.20);
+  transition: transform 0.2s ease;
+
 }
 .stat-card h4 {
   font-size: 1rem;
@@ -542,7 +581,7 @@ margin:0.8rem 0;
   text-transform: uppercase;
 }
 .stat-card span{
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: bold;
 }
 /* Colores diferenciados */
@@ -555,7 +594,123 @@ margin:0.8rem 0;
 }
 
 .card-total {
-  text-align: start;
   background-color: #fff;
-  width: 100%;
+  box-shadow: none;
 }
+
+.container-total-motivation{
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  flex: 1;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
+
+}
+.container-total-motivation{
+  border-radius: 1rem;
+  padding: 0 1em;
+}
+.container-total-motivation h4 {
+  font-size: 1.5rem; 
+  font-weight: 500;
+  font-family: Poppins, sans-serif;
+  text-transform: none;
+  color: #0b87ac;
+}
+.container-total-motivation span{
+  font-weight: 500;
+}
+.motivation-section {
+  flex: 1; /* ocupa todo el espacio sobrante */
+  display: flex;
+  align-items: end; 
+  justify-content: center; 
+  flex-direction: column;
+  border-radius: 2rem;
+  padding: 1rem 1.5rem;
+  
+}
+
+/* texto de la frase */
+.motivational-quote {
+  font-size: 1rem;
+  font-style: italic;
+}
+/* modal total tareas */
+
+/* Fondo del modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+/* Caja del modal */
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 800px;
+  width:100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+}
+.show-more-btn {
+  border: 3px solid var(--orange-color);
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.2s ease;
+  margin: 0 auto;
+  display: block;
+}
+.show-more-btn:hover {
+  background: #fff;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+
+}
+/* Botón de cerrar */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #555;
+}
+.modal-title{
+  font-size: 1.8rem;
+  text-align: center;
+}
+/* Tareas dentro del modal */
+.modal-task-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+

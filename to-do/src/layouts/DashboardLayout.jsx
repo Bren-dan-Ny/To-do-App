@@ -13,14 +13,14 @@ function DashboardLayout({
   onEdit,
   onDelete,
 }) {
-  const [date, setDate] = useState(new Date());
+  const [date] = useState(new Date());
 
-  // dia de la semana
+  // Día de la semana
   const weekday = date
     .toLocaleDateString("es-ES", { weekday: "long" })
     .replace(/^\w/, (c) => c.toUpperCase());
 
-  // fecha formateada
+  // Fecha formateada
   const formattedDate = date
     .toLocaleDateString("es-ES", {
       day: "numeric",
@@ -36,22 +36,24 @@ function DashboardLayout({
 
   return (
     <>
-      {/* header and logo */}
+      {/* Header */}
       <header className="dashboard-header">
         <div className="header-logo">
           <img src="/favicon.png" alt="Logo" />
           <h2 className="logo-name">Task Mate</h2>
         </div>
-        <div className="header-profile">{<IoPersonCircleOutline />}</div>
+        <div className="header-profile">
+          <IoPersonCircleOutline />
+        </div>
       </header>
 
-      {/* layout principal */}
       <main className="dashboard-container">
         <h1 className="msg-welcome">
-          Hello, Lhuana, ¡Empieza a planificar hoy!{" "}
+          Hello, Lhuana, ¡Empieza a planificar hoy!
         </h1>
+
         <section className="dashboard-layout">
-          {/* section task - calendar */}
+          {/* Parte superior */}
           <section className="dashboard-top">
             <aside className="dashboard-calendar">
               <div className="calendar-header">
@@ -66,8 +68,13 @@ function DashboardLayout({
                 }
               />
             </aside>
+
             <section className="dashboard-tasks">
-              <TaskForm onAddTask={onAddTask} />
+              <div className="task-controls">
+                <TaskForm onAddTask={onAddTask} />
+              </div>
+
+              {/* Ahora TaskList maneja su propio filtro */}
               <TaskList
                 tasks={tasks}
                 onToggleComplete={onToggleComplete}
@@ -77,6 +84,7 @@ function DashboardLayout({
             </section>
           </section>
 
+          {/* Estadísticas */}
           <section className="dashboard-stats">
             <TaskStats tasks={tasks} />
           </section>
@@ -85,4 +93,5 @@ function DashboardLayout({
     </>
   );
 }
+
 export default DashboardLayout;
