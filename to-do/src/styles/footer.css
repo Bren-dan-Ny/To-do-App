@@ -1,0 +1,50 @@
+.dashboard-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 4rem;
+    background-color: #F2EAEA;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: var(--text-color);
+}
+ .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+ .footer-logo img {
+    width: 50px;
+    object-fit: contain;
+  }
+  
+.footer-logo h2 {
+    font-family: "Island Moments", cursive;
+    font-size: 3rem;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  .dashboard-footer p {
+    font-family:  'Abhaya Libre', serif;
+    font-size: 1.6rem;
+  }
+.icons-footer{
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .icons-footer a {
+    display: inline-flex;
+    color: var(--text-color);
+    transition: color 0.2s ease;
+    font-size: 1.2rem;
+    border: 1px solid var(--text-color);
+    padding: 0.8rem;
+    border-radius: 50%;
+  }
+  
+  .icons-footer a:hover {
+    color: var(--primary-color);
+}

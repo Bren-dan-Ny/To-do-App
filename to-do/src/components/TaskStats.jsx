@@ -19,11 +19,9 @@ function TaskStats({ tasks = [] }) {
     const today = new Date().toDateString(); // ejemplo: "Thu Nov 06 2025"
     const savedData = JSON.parse(localStorage.getItem("dailyQuote"));
 
-    // Si ya hay una frase guardada para hoy → úsala
     if (savedData && savedData.date === today) {
       setRandomFrase(savedData.quote);
     } else {
-      // Si es un nuevo día → genera una nueva frase y guárdala
       const newQuote =
         motivationalQuotes[
           Math.floor(Math.random() * motivationalQuotes.length)

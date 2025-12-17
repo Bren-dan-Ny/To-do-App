@@ -1,0 +1,43 @@
+/* =====================
+   GOOGLE FONTS
+===================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap');
+
+/* =====================
+   VARIABLES
+===================== */
+:root {
+  --primary-color: #F87777;
+  --secondary-color: #F0D1A8;
+  --background-color: #F8F5F2;
+  --text-color: #2D2D2D;
+  --muted-color: #B4A7A0;
+  --orange-color: #F2B258;
+  --success-color: #6BAF92;
+  --highlight-color: #C4A49F;
+  --surface-dark: #63605F;
+}
+
+/* =====================
+   RESET / BASE
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =====================
+   BASE TYPOGRAPHY
+===================== */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
+  line-height: 1.5;
+}

@@ -23,28 +23,26 @@ function TaskList({ tasks = [], onToggleComplete, onDelete, onEdit }) {
 
   return (
     <>
-      <div className="list-search-container">
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <ul className="task-list">
-          {filteredTasks.length > 0 ? (
-            visibleTasks.map((task) => (
-              <TaskCard
-                key={task.id}
-                task={task}
-                onToggleComplete={onToggleComplete}
-                onDelete={onDelete}
-                onEdit={onEdit}
-              />
-            ))
-          ) : (
-            <div className="empty-placeholder">
-              {tasks.length === 0
-                ? "No hay tareas todavía"
-                : "No hay tareas que coincidan con tu búsqueda"}
-            </div>
-          )}
-        </ul>
-      </div>
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <ul className="task-list">
+        {filteredTasks.length > 0 ? (
+          visibleTasks.map((task) => (
+            <TaskCard
+              key={task.id}
+              task={task}
+              onToggleComplete={onToggleComplete}
+              onDelete={onDelete}
+              onEdit={onEdit}
+            />
+          ))
+        ) : (
+          <div className="no-results">
+            {tasks.length === 0
+              ? "No hay tareas todavía"
+              : "No hay tareas que coincidan con tu búsqueda"}
+          </div>
+        )}
+      </ul>
 
       <button className="show-more-btn" onClick={handleOpenModal}>
         Ver Todas las Tareas
@@ -52,7 +50,10 @@ function TaskList({ tasks = [], onToggleComplete, onDelete, onEdit }) {
 
       {showModal && (
         <div className="modal-overlay" onClick={handleCloseModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="modal-content large"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button className="close-btn" onClick={handleCloseModal}>
               ✕
             </button>

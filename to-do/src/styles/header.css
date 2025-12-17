@@ -1,0 +1,40 @@
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    height: 100px;
+    background-color: #F2EAEA;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+  
+  .header-logo, .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .header-logo img, .footer-logo img {
+    height: 60px;
+    object-fit: contain;
+  }
+  
+  .logo-name, .footer-logo-name {
+    font-family: "Island Moments", cursive;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  
+  .header-profile svg {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .header-profile svg:hover {
+    transform: scale(1.1);
+    color: var(--primary-color);
+  }
+  

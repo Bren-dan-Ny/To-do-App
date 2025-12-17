@@ -1,7 +1,10 @@
-import Calendar from "react-calendar";
+import { useState, useEffect } from "react";
 import { IoPersonCircleOutline } from "react-icons/io5";
-import { useState } from "react";
+import { FaGithub } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
 import "react-calendar/dist/Calendar.css";
+import Calendar from "react-calendar";
 import TaskForm from "../components/TaskForm";
 import TaskList from "../components/TaskList";
 import TaskStats from "../components/TaskStats";
@@ -13,6 +16,25 @@ function DashboardLayout({
   onEdit,
   onDelete,
 }) {
+  const [userName, setUserName] = useState("");
+  const [showNameModal, setShowNameModal] = useState(false);
+
+  useEffect(() => {
+    const storedName = localStorage.getItem("userName");
+    if (storedName) {
+      setUserName(storedName);
+    } else {
+      setShowNameModal(true);
+    }
+  }, []);
+
+  // funcion guardar nombre
+  const handleSaveName = (name) => {
+    setUserName(name);
+    localStorage.setItem("userName", name);
+    setShowNameModal(false);
+  };
+
   const [date] = useState(new Date());
 
   // Día de la semana
@@ -36,6 +58,44 @@ function DashboardLayout({
 
   return (
     <>
+      {showNameModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>¡Bienvenid@!</h3>
+            <p>¿Cómo te llamas?</p>
+
+            <input
+              type="text"
+              placeholder="Tu nombre"
+              autoFocus
+              onKeyDown={(e) => {
+                const value = e.target.value.trim();
+                if (e.key === "Enter" && value.length >= 2) {
+                  handleSaveName(
+                    value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
+                  );
+                }
+              }}
+            />
+
+            <button
+              className="btn-continue"
+              onClick={(e) => {
+                const input = e.target.previousSibling;
+                const value = input.value.trim();
+                if (value.length >= 0) {
+                  handleSaveName(
+                    value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
+                  );
+                }
+              }}
+            >
+              Continuar
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <header className="dashboard-header">
         <div className="header-logo">
@@ -47,9 +107,12 @@ function DashboardLayout({
         </div>
       </header>
 
+      {/* Contenido principal */}
       <main className="dashboard-container">
         <h1 className="msg-welcome">
-          Hello, Lhuana, ¡Empieza a planificar hoy!
+          {userName
+            ? `Hola, ${userName}, ¡Empieza a planificar hoy!`
+            : "Hola, ¡Empieza a planificar hoy!"}
         </h1>
 
         <section className="dashboard-layout">
@@ -73,8 +136,6 @@ function DashboardLayout({
               <div className="task-controls">
                 <TaskForm onAddTask={onAddTask} />
               </div>
-
-              {/* Ahora TaskList maneja su propio filtro */}
               <TaskList
                 tasks={tasks}
                 onToggleComplete={onToggleComplete}
@@ -84,12 +145,31 @@ function DashboardLayout({
             </section>
           </section>
 
-          {/* Estadísticas */}
+          {/* Estadisticas */}
           <section className="dashboard-stats">
             <TaskStats tasks={tasks} />
           </section>
         </section>
       </main>
+
+      <footer className="dashboard-footer">
+        <div className="footer-logo">
+          <img src="/favicon.png" alt="Logo" />
+          <h2 className="footer-logo-name">Task Mate</h2>
+        </div>
+        <p>© 2024 Task Mate. Todos los derechos reservados.</p>
+        <div className="icons-footer">
+          <a href="">
+            <FaGithub />
+          </a>
+          <a href="">
+            <BsTwitterX />
+          </a>
+          <a href="">
+            <FaFacebookF />
+          </a>
+        </div>
+      </footer>
     </>
   );
 }
