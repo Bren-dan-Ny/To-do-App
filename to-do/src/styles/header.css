@@ -8,18 +8,18 @@
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
 }
   
-  .header-logo, .footer-logo {
+  .header-logo {
     display: flex;
     align-items: center;
     gap: 2rem;
   }
   
-  .header-logo img, .footer-logo img {
+  .header-logo img {
     height: 60px;
     object-fit: contain;
   }
   
-  .logo-name, .footer-logo-name {
+  .logo-name {
     font-family: "Island Moments", cursive;
     font-size: 3.5rem;
     font-weight: 600;

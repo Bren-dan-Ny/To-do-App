@@ -105,11 +105,11 @@ function TaskCard({ task, onToggleComplete, onDelete, onEdit }) {
               <span className="task-category-label">
                 {task.category && task.category.trim() !== ""
                   ? task.category
-                  : "Sin categoría"}
+                  : "Otros"}
               </span>
               {task.createdAt && (
                 <span className="task-created">
-                  Creado: {getFormattedDate(task.createdAt)}
+                  Creado {getFormattedDate(task.createdAt)}
                 </span>
               )}
             </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IoMdSend } from "react-icons/io";
+import { RiAddLargeFill } from "react-icons/ri";
 
 function TaskForm({ onAddTask }) {
   const [text, setText] = useState("");
@@ -36,7 +36,7 @@ function TaskForm({ onAddTask }) {
       />
       <textarea
         rows="1"
-        cols="30"
+        cols="26"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Descripción (opcional)"
@@ -54,7 +54,7 @@ function TaskForm({ onAddTask }) {
         <option value="Otros">Otros</option>
       </select>
       <button type="submit">
-        <IoMdSend />
+        <RiAddLargeFill />
       </button>
     </form>
   );
