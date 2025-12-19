@@ -2,7 +2,11 @@
   /* ================================
      STAT CARDS
   ================================ */
-  
+  .container-stats-left {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
   .stat-card {
     height: auto;
     padding: 1rem 2rem;

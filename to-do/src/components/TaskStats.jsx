@@ -36,26 +36,28 @@ function TaskStats({ tasks = [] }) {
 
   return (
     <section className="container-stats-card">
-      <div className="stat-card card-completed">
-        <h4>
-          Tareas <br /> Completadas
-        </h4>
-        <CountUp
-          end={completed}
-          duration={1.2}
-          formattingFn={(value) => String(value).padStart(2, "0")}
-        />
-      </div>
+      <div className="container-completed-pending">
+        <div className="stat-card card-completed">
+          <h4>
+            Tareas <br /> Completadas
+          </h4>
+          <CountUp
+            end={completed}
+            duration={1.2}
+            formattingFn={(value) => String(value).padStart(2, "0")}
+          />
+        </div>
 
-      <div className="stat-card card-pending">
-        <h4>
-          Tareas <br /> Pendientes
-        </h4>
-        <CountUp
-          end={pending}
-          duration={1.2}
-          formattingFn={(value) => String(value).padStart(2, "0")}
-        />
+        <div className="stat-card card-pending">
+          <h4>
+            Tareas <br /> Pendientes
+          </h4>
+          <CountUp
+            end={pending}
+            duration={1.2}
+            formattingFn={(value) => String(value).padStart(2, "0")}
+          />
+        </div>
       </div>
 
       <div className="container-total-motivation">

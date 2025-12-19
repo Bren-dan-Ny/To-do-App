@@ -3,6 +3,7 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
+import { RiAddLargeFill } from "react-icons/ri";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
 import TaskForm from "../components/TaskForm";
@@ -18,7 +19,10 @@ function DashboardLayout({
 }) {
   const [userName, setUserName] = useState("");
   const [showNameModal, setShowNameModal] = useState(false);
+  const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
+  const [showTaskFormModal, setShowTaskFormModal] = useState(false);
 
+  // Guardar nombre en localStorage
   useEffect(() => {
     const storedName = localStorage.getItem("userName");
     if (storedName) {
@@ -28,6 +32,15 @@ function DashboardLayout({
     }
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsTablet(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // funcion guardar nombre
   const handleSaveName = (name) => {
     setUserName(name);
@@ -35,6 +48,9 @@ function DashboardLayout({
     setShowNameModal(false);
   };
 
+  const handleOpenTaskModal = () => {
+    setShowTaskFormModal(true);
+  };
   const [date] = useState(new Date());
 
   // Día de la semana
@@ -134,13 +150,53 @@ function DashboardLayout({
 
             <section className="dashboard-tasks">
               <div className="task-controls">
-                <TaskForm onAddTask={onAddTask} />
+                {isTablet ? (
+                  <>
+                    <button
+                      className="add-task-btn"
+                      onClick={() => setShowTaskFormModal(true)}
+                    >
+                      <RiAddLargeFill /> Agregar tarea
+                    </button>
+
+                    {showTaskFormModal && (
+                      <div
+                        className="modal-form-overlay"
+                        onClick={() => setShowTaskFormModal(false)}
+                      >
+                        <div
+                          className="modal-content-create"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <button
+                            className="close-btn"
+                            onClick={() => setShowTaskFormModal(false)}
+                          >
+                            ✕
+                          </button>
+
+                          <h2>Crear tarea</h2>
+                          <TaskForm
+                            onAddTask={(task) => {
+                              onAddTask(task);
+                              setShowTaskFormModal(false);
+                            }}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <TaskForm onAddTask={onAddTask} />
+                )}
               </div>
+
               <TaskList
                 tasks={tasks}
                 onToggleComplete={onToggleComplete}
                 onDelete={onDelete}
                 onEdit={onEdit}
+                onAddTaskClick={handleOpenTaskModal}
               />
             </section>
           </section>
