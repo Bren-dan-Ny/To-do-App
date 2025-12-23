@@ -3,13 +3,14 @@
   .calendar-day {
     font-family: "Island Moments", cursive;
     font-size: 4rem;
+    font-size: clamp(2.8rem, 3.5vw, 3.5rem);
     font-weight: 400;
     color: var(--primary-color);
   }
   
   .calendar-date {
     font-family: 'Abhaya Libre', serif;
-    font-size: 3rem;
+    font-size: clamp(2rem, 2.8vw, 2.6rem);
     font-weight: 400;
     color: var(--text-color);
   }

@@ -1,108 +1,4 @@
-/* Desktop grande */
-@media (max-width: 1440px) {
-    .msg-welcome {
-        font-size: 3.2rem;
-      }
-    
-      .dashboard-layout {
-        width: 100%;
-        max-width: 1200px;
-        padding: 0;
-      }
-    
-      .dashboard-top {
-        grid-template-columns: 320px 1fr;
-        gap: 2rem;
-        padding: 1.5rem 1rem;
-      }
-    
-      .dashboard-stats {
-        padding: 0 1rem;
-      }
-    
-    .task-form {
-      gap: 0.7rem;
-    }
-  .add-task-mobile{
-    display: none ;
-  }
-    .task-form input,
-    .task-form textarea,
-    .task-form select,
-    .task-form button {
-      padding: 0.6rem 1.2rem;
-      font-size: 0.85rem;
-    }
-  
-    .task-form select {
-      width: 120px;
-    }
-  
-    .task-list {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      }
-      
-  
-    .task-description {
-      font-size: 0.85rem;
-      line-height: 1.4;
-    }
-    .show-more-btn {
-        font-size: 1rem;
-        padding: 0.6rem 1rem;
-    }
-    .calendar-day {
-      font-size: 3.5rem;
-      line-height: 1;
-    }
-  
-    .calendar-date {
-      font-size: 2.6rem;
-    }
-    .container-stats-card {
-      gap: 1rem;
-    }
-    .stat-card{
-      padding: 0.8rem 1.5rem;
-    }
-    .stat-card h4 {
-      font-size: 1rem;
-      margin-bottom: 0.6rem;
-    }
 
-    .stat-card span {
-      font-size: 3rem;
-      line-height: 1;
-    }
-    .motivation-section {
-        padding: 1rem;
-      }
-      
-    .motivational-quote {
-        font-size: 0.9rem;
-        font-style: italic;
-        text-align: center;
-    }
-
-    /* FOOTER */
-    .footer-logo{
-        gap: 1.5rem;
-    }
-    .footer-logo h2{
-        font-size: 2rem;
-    }
-    .footer-logo img {
-        width: 30px;
-    }
-    .dashboard-footer p {
-        font-size: 1rem;
-    }
-    .icons-footer a {
-        font-size: 1rem;
-        padding: 0.6rem;
-    }
-}
-  
 /* Tablet */
 @media (max-width: 1024px) {
     .msg-welcome {
@@ -182,7 +78,7 @@
     flex-direction: column;
      gap: 0.8rem;
     width: 100%;
-    height: auto;
+    grid-template-columns: 1fr;
       }
       .add-task-mobile{
         display: none ;
@@ -255,7 +151,7 @@
         gap: 1.3rem;
     }
     .footer-logo h2{
-        font-size: 2rem;
+        font-size: 1rem;
     }
     .dashboard-footer p {
         font-size: 1rem;
@@ -286,7 +182,7 @@
     }
   
     .dashboard-top {
-        padding: 0 ;
+        padding:0 2rem ;
       display: grid;
       grid-template-columns: 1fr;
       gap: 0;
@@ -361,8 +257,7 @@
     }
   
     .dashboard-stats {
-      margin-top: 1.5rem;
-      padding: 0;
+
     }
     .container-completed-pending {
         display: grid;

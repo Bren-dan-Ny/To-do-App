@@ -9,6 +9,8 @@ import Calendar from "react-calendar";
 import TaskForm from "../components/TaskForm";
 import TaskList from "../components/TaskList";
 import TaskStats from "../components/TaskStats";
+import TotalTasksStat from "../components/taskStats/TotalTasksStat";
+import MotivationQuote from "../components/taskStats/MotivationQuote";
 
 function DashboardLayout({
   tasks,
@@ -17,6 +19,8 @@ function DashboardLayout({
   onEdit,
   onDelete,
 }) {
+  const total = tasks.length;
+
   const [userName, setUserName] = useState("");
   const [showNameModal, setShowNameModal] = useState(false);
   const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
@@ -205,6 +209,14 @@ function DashboardLayout({
           <section className="dashboard-stats">
             <TaskStats tasks={tasks} />
           </section>
+        </section>
+
+        {/* Stats mobile (fuera del layout) */}
+        <section className="stats-mobile">
+          <div className="container-total-motivation">
+            <TotalTasksStat total={total} />
+            <MotivationQuote />
+          </div>
         </section>
       </main>
 

@@ -2,14 +2,16 @@
   /* ================================
      STAT CARDS
   ================================ */
-  .container-stats-left {
+  .container-completed-pending {
+    flex-wrap: wrap;   /* ← CLAVE */
     display: flex;
-    flex-direction: row;
     gap: 1rem;
   }
+  
   .stat-card {
-    height: auto;
-    padding: 1rem 2rem;
+    flex: 1 1 160px; /* ← clave */
+    min-width: 140px;
+    padding: 1.2rem 2.3rem;
     border-radius: 1.8rem;
     text-align: center;
     display: flex;
@@ -17,8 +19,9 @@
     justify-content: center;
     box-sizing: border-box;
   }
+  
   .stat-card h4 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.2;
     font-weight: 600;
     margin-bottom: 0.8rem;
@@ -26,7 +29,7 @@
   }
   
   .stat-card span {
-    font-size: 4rem;
+    font-size: 3rem;
     line-height: 0.9;
     font-weight: 900;
   }
@@ -42,6 +45,7 @@
   
   .card-total {
     box-shadow: none;
+    padding: 0;
   }
   
   /* ================================
@@ -50,17 +54,21 @@
   
   .container-total-motivation {
     flex: 1;
+    justify-content: space-between;
+    align-items: center;
     display: flex;
+    flex-wrap: nowrap;
     gap: 1rem;
     width: 100%;
-    padding: 0 1rem;
+    padding: 0 2rem;
     border-radius: 1rem;
     background-color: #fff;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
   }
+ 
   
   .container-total-motivation h4 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: #0b87ac;
   }
@@ -71,13 +79,11 @@
   
   /* Motivación */
   .motivation-section {
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
     justify-content: center;
-    padding: 1rem 1.5rem;
     border-radius: 2rem;
   }
   

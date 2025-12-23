@@ -34,13 +34,11 @@ function TaskForm({ onAddTask }) {
         onChange={(e) => setText(e.target.value)}
         placeholder="Escribe una tarea"
       />
-      <textarea
-        rows="1"
-        cols="26"
+      <input
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Descripción (opcional)"
-      ></textarea>
+      />
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
