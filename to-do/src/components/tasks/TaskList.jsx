@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { RiAddLargeFill } from "react-icons/ri";
 import TaskCard from "./TaskCard";
-import SearchBar from "./SearchBar";
+import SearchBar from "../common/SearchBar";
 
 function TaskList({
   tasks = [],

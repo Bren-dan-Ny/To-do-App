@@ -1,13 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./styles/footer.css";
-import "./styles/index.css";
-import "./styles/layout.css";
-import "./styles/header.css";
-import "./styles/components.css";
-import "./styles/modal.css";
-import "./styles/calendar.css";
-import "./styles/stats.css";
+import "./styles//layout/footer.css";
+import "./styles/base/index.css";
+import "./styles/layout/layout.css";
+import "./styles/layout/header.css";
+import "./styles/components/components.css";
+import "./styles/components/modal.css";
+import "./styles/components/calendar.css";
+import "./styles/components/stats.css";
 import "./styles/responsive.css";
 import App from "./App.jsx";
 

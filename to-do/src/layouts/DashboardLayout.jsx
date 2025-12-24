@@ -6,11 +6,11 @@ import { BsTwitterX } from "react-icons/bs";
 import { RiAddLargeFill } from "react-icons/ri";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
-import TaskForm from "../components/TaskForm";
-import TaskList from "../components/TaskList";
-import TaskStats from "../components/TaskStats";
-import TotalTasksStat from "../components/taskStats/TotalTasksStat";
-import MotivationQuote from "../components/taskStats/MotivationQuote";
+import TaskForm from "../components/tasks/TaskForm";
+import TaskList from "../components/tasks/TaskList";
+import TaskStats from "../components/tasks/TaskStats";
+import TotalTasksStat from "../components/stats/TotalTasksStat";
+import MotivationQuote from "../components/stats/MotivationQuote";
 
 function DashboardLayout({
   tasks,

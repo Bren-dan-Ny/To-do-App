@@ -1,6 +1,6 @@
-import CompletedPendingStats from "./taskStats/CompletedPendingStats";
-import TotalTasksStat from "./taskStats/TotalTasksStat";
-import MotivationQuote from "./taskStats/MotivationQuote";
+import CompletedPendingStats from "../stats/CompletedPendingStats";
+import TotalTasksStat from "../stats/TotalTasksStat";
+import MotivationQuote from "../stats/MotivationQuote";
 
 function TaskStats({ tasks = [] }) {
   const total = tasks.length;
@@ -11,7 +11,7 @@ function TaskStats({ tasks = [] }) {
     <>
       <CompletedPendingStats completed={completed} pending={pending} />
 
-      <div className="container-total-motivation">
+      <div className="container-total-motivation motivation-desktop">
         <div className="total-tasks-wrapper">
           <TotalTasksStat total={total} />
         </div>

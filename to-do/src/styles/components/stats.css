@@ -3,7 +3,7 @@
      STAT CARDS
   ================================ */
   .container-completed-pending {
-    flex-wrap: wrap;   /* ← CLAVE */
+    flex-wrap: nowrap;   /* ← CLAVE */
     display: flex;
     gap: 1rem;
   }

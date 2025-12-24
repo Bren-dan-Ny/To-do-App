@@ -1,287 +1,383 @@
+/* responsive.css - Manteniendo TODOS los valores diferentes */
 
-/* Tablet */
 @media (max-width: 1024px) {
-    .msg-welcome {
-        font-size: 2.5rem;
-      }
-      /* HEADER */
-      .dashboard-header{
-        padding: 1rem 1.5rem;
-      }
-      .header-logo{
-        gap: 1rem;
-      }
-      .header-logo img{
-        width: 50px;
-      }
-      .logo-name{
-        font-size: 2.8rem;
-      }
-        .header-profile svg{
-            width: 50px;
-            height: 50px;
-        }
-
-    .dashboard-layout{
-        width: 100%;
-        max-width: 800px;
-        padding: 1rem 2rem 2rem; 
-    }
-    .dashboard-top {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2.5rem;
-        padding: 1.5rem 1rem;
-      }
-    .add-task-btn {
-        background-color: #5C9967;
-        border: none;
-        width: 100%;
-        padding: 0.8rem 1rem;
-        font-size: 1rem;
-        border-radius: 0 8px 8px 0;
-        cursor: pointer;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-      .add-task-btn svg {
-        font-size: 1.2rem;
-      }
-      .modal-form-overlay {
-        position: fixed;
-        inset: 0;
-        z-index: 1000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        backdrop-filter: blur(4px);
-        background: rgba(0, 0, 0, 0.45);
-      }
-      .modal-content-create {
-        width: 100%;
-        max-width: 460px;
-        position: relative;
-        background: var(--background-color);
-        padding: 2rem;
-        border-radius: 16px;
-      
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-    .task-form {
-        display: flex;
-    flex-direction: column;
-     gap: 0.8rem;
+  .msg-welcome {
+    margin: 1.5rem 0;
+    font-size: 2.5rem;
+  }
+  
+  /* HEADER */
+  .dashboard-header {
+    padding: 1rem 1.5rem;
+    height: 80px;
+  }
+  
+  .header-logo {
+    gap: 1.5rem;
+  }
+  
+  .header-logo img {
+    height: 40px;
+  }
+  
+  .logo-name {
+    font-size: 2.8rem;
+  }
+  
+  .header-profile svg {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .dashboard-layout {
     width: 100%;
+    max-width: 800px;
+    padding: 1rem 2rem 2rem;
+  }
+  
+  .dashboard-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .dashboard-tasks {
+    gap: 1.5rem;
+  }
+  
+  .dashboard-stats {
+    gap: 1.5rem;
+  }
+  .add-task-btn {
+    background-color: #5C9967;
+    border: none;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .add-task-btn svg {
+    font-size: 1.2rem;
+  }
+  .add-task-mobile{
+    display: none;
+  }
+  
+  .modal-form-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.45);
+  }
+  
+  .modal-content-create {
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+    background: var(--background-color);
+    padding: 2rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .modal-content-create button {
+    justify-content: center;
+  }
+  
+  .task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+  }
+  .task-list {
+    max-width: 420px;
+    display: grid;
     grid-template-columns: 1fr;
-      }
-      .add-task-mobile{
-        display: none ;
-      }
-    .task-list {
-        max-width: 420px;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-      .modal-content-create input,
-.modal-content-create textarea,
-.modal-content-create select,
-.modal-content-create button {
-    box-sizing: content-box;
-}
-
-    .task-form {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-    .task-card{
-        padding: 0.8rem;
-      }
-    .task-title {
-        font-size: 1rem;
-      }
-    
-      .task-description {
-        font-size: 0.8rem;
-        line-height: 1.3;
-      }
-      /* CALENDARIO */
-    .calendar-day {
-        font-size: 3rem;
-      }
-    .calendar-date {
-        font-size: 2.2rem;
-      }
-     
-      /* stats Motivation */
-      .stat-card {
-        padding: 0.8rem 1.2rem;
-      }
-      .stat-card h4 {
-        font-size: 0.8rem;
-        line-height: 1.2;
-        font-weight: 600;
-        margin-bottom: 0.8rem;
-        text-transform: uppercase;
-      }
-      
-      .stat-card span {
-        font-size: 3rem;
-        line-height: 0.9;
-        font-weight: 800;
-      }
-      
-       .motivation-section h3{
-        font-size: 1rem;
-       }
-       .motivational-quote{
-        font-size: 0.85rem;
-       }
-       .dashboard-footer{
-        padding: 1rem 2rem;
-       }
-       .footer-logo{
-        gap: 1.3rem;
-    }
-    .footer-logo h2{
-        font-size: 1rem;
-    }
-    .dashboard-footer p {
-        font-size: 1rem;
-    }
-    .icons-footer{
-        gap: 1.2rem;
-      }
-    .icons-footer a {
-        font-size: 1rem;
-        padding: 0.5rem;
-    }
+    gap: 1rem;
+  }
+  
+  .task-card {
+    padding: 0.8rem;
+  }
+  
+  .task-description {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+  
+  /* CALENDARIO */
+  .calendar-day {
+    font-size: 2.8rem;
+  }
+  
+  .calendar-date {
+    font-size: 2rem;
+  }
+  
+  .show-more-btn {
+    font-size: 1rem;
+  }
+  
+  /* Stats Motivation */
+  .container-total-motivation {
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .stat-card {
+    padding: 0.6rem 1rem;
+  }
+  
+  .stat-card h4 {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+  }
+  
+  .stat-card span {
+    font-size: 3rem;
+    line-height: 0.9;
+    font-weight: 800;
+  }
+  
+  .motivation-section h3 {
+    font-size: 1rem;
+  }
+  
+  .motivational-quote {
+    font-size: 0.85rem;
+  }
+  
+  .dashboard-footer {
+    padding: 1rem 2rem;
+  }
+  
+  .footer-logo {
+    gap: 1.3rem;
+  }
+  
+  .footer-logo h2 {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-footer p {
+    font-size: 1rem;
+  }
+  
+  .icons-footer {
+    gap: 1.2rem;
+  }
+  
+  .icons-footer a {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-    .msg-welcome {
-      font-size: 2rem;
-    }
-
-    .dashboard-layout {
-      width: 100%;
-      max-width: 550px;
-      padding: 0;
-    }
+  .msg-welcome {
+    font-size: 1.8rem;
+    margin: 1.2rem 0;
+  }
   
-    .dashboard-calendar .react-calendar {
-      display: none;
-    }
+  /* HEADER */
+  .dashboard-header {
+    padding: 1rem 1.2rem;
+    height: 60px;
+  }
   
-    .dashboard-top {
-        padding:0 2rem ;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
-       /* CALENDARIO */
-       .calendar-day {
-        font-size: 3.8rem;
-      }
-    .calendar-date {
-        font-size: 2.5rem;
-      }
-
-      .task-card{
-        padding: 0.8rem;
-      }
-    .task-title {
-        font-size: 1.2rem;
-      }
-      .task-actions {
-        display: flex;
-        flex-direction: column;
-        gap: 0.9rem;
-      }
-      .task-description {
-        font-size: 1.0rem;
-      }
-      .task-category-label {
-        font-size: 0.85rem;
-        padding: 0.2rem 0.7rem;
-      }
-       /* stats Motivation */
-       .motivation-section h3{
-        font-size: 1rem;
-       }
-       .motivational-quote{
-        font-size: 0.85rem;
-       }
-    .task-controls {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .container-mobile-search{
-        display: flex;
-        justify-content: space-between;
-    }
-    .add-task-btn{
-        display: none;
-      }
-    .add-task-mobile{
-        display: inline-flex ;
-        padding: 0;
-      }
-      .container-mobile-search {
-        display: flex;
-        align-items: center;
-      }
-      .add-task-mobile {
-        flex-shrink: 0;
-        width: auto;
-        padding: 0.6rem 0.75rem;
-      }
-    .task-controls .add-task-btn {
-      width: auto;
-      padding: 0.6rem 1rem;
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
-    .task-list{
-        max-width: 400px;
-        margin: 0 auto;
-    }
+  .header-logo {
+    gap: 1rem;
+  }
   
-    .dashboard-stats {
-
-    }
-    .container-completed-pending {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        width: 100%;
-      }
-    .card-pending,
-.card-completed {
-  width: 100%;
-  max-width: none;   
-  box-sizing: border-box;
-  display: flex;
-  margin: 0;     
-}
+  .header-logo img {
+    height: 25px;
+  }
+  
+  .logo-name {
+    font-size: 2rem;
+  }
+  
+  .header-profile svg {
+    width: auto;
+    height: 30px;
+  }
+  
+  .dashboard-layout {
+    width: 100%;
+    max-width: 500px;
+    padding: 0 1.2rem 2rem;
+    gap: 2rem;
+  }
+  
+  .dashboard-tasks {
+    gap: 1.2rem;
+  }
+  
+  .react-calendar {
+    display: none;
+  }
+  
+  .calendar-day {
+    font-size: 2.5rem;
+  }
+  
+  .calendar-date {
+    font-size: 1.8rem;
+  }
+  
+  .dashboard-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0;
+  }
+  
+  .task-card {
+    padding: 0.9rem;
   }
   
 
+  .task-title {
+    font-size: 1.1rem;
+  }
+  
+  .task-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  
+  .task-description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+  
+  .task-category-label {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.7rem;
+  }
+  
 
-/* .desktop-only {
+  .motivation-section h3 {
+    font-size: 1rem;
+  }
+  
+  .motivational-quote {
+    font-size: 0.85rem;
+  }
+  
+  .container-mobile-search {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .add-task-btn {
+    display: none;
+  }
+  
+  .add-task-mobile {
+    display: inline-flex;
+    padding: 0;
+    flex-shrink: 0;
+    width: auto;
+    padding: 0.6rem 0.75rem;
+  }
+  
+  .task-list {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .modal-content {
+    padding: 1rem;
+    gap: 0;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+  }
+  
+  .modal-content-create {
+    width: calc(100% - 2rem);
+    padding: 1.2rem;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 14px;
+  }
+  
+  .motivation-desktop {
+    display: none;
+  }
+  
+  .stats-mobile {
     display: block;
   }
   
-  .tablet-only {
-    display: none;
-  } */
+  .container-completed-pending {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    width: 100%;
+  }
   
+  .container-total-motivation {
+    margin-top: 1.2rem;
+  }
+  
+  .container-total-motivation h4 {
+    font-size: 0.8rem;
+  }
+  
+  .card-pending,
+  .card-completed {
+    max-width: none;
+    box-sizing: border-box;
+    display: flex;
+    margin: 0;
+  }
+  
+  .dashboard-footer {
+    margin-top: 2rem;
+    padding: 1rem 1.2rem;
+  }
+  
+  .dashboard-footer p {
+    display: none;
+  }
+  
+  .footer-logo img {
+    width: 20px;
+  }
+  
+  .footer-logo h2 {
+    font-size: 1.6rem;
+  }
+  
+  .icons-footer {
+    gap: 0.8rem;
+  }
+  
+  .icons-footer a {
+    padding: 0.4rem;
+  }
+}
