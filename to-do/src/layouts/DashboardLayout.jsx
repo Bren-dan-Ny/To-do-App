@@ -223,7 +223,7 @@ function DashboardLayout({
 
       <footer className="dashboard-footer">
         <div className="footer-logo">
-          <img src="/favicon.png" alt="Logo" />
+          <img src={favicon} alt="Logo" />
           <h2 className="footer-logo-name">Task Mate</h2>
         </div>
         <p>© 2024 Task Mate. Todos los derechos reservados.</p>
