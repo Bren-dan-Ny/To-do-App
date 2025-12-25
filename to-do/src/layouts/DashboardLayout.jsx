@@ -4,6 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { RiAddLargeFill } from "react-icons/ri";
+import favicon from "../assets/favicon.png";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
 import TaskForm from "../components/tasks/TaskForm";
@@ -119,7 +120,7 @@ function DashboardLayout({
       {/* Header */}
       <header className="dashboard-header">
         <div className="header-logo">
-          <img src="/favicon.png" alt="Logo" />
+          <img src={favicon} alt="Logo" />
           <h2 className="logo-name">Task Mate</h2>
         </div>
         <div className="header-profile">
