@@ -1,4 +1,4 @@
-/* responsive.css - Manteniendo TODOS los valores diferentes */
+/* Responsive */
 
 @media (max-width: 1024px) {
   .msg-welcome {
@@ -21,7 +21,7 @@
   }
   
   .logo-name {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
   
   .header-profile svg {
@@ -40,12 +40,7 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 2rem;
     padding: 0.5rem 1rem;
-  }
-  
-  .dashboard-tasks {
-    gap: 1.5rem;
-  }
-  
+  } 
   .dashboard-stats {
     gap: 1.5rem;
   }
@@ -169,7 +164,7 @@
   }
   
   .footer-logo {
-    gap: 1.3rem;
+    gap: 1rem;
   }
   
   .footer-logo h2 {
@@ -212,7 +207,7 @@
   }
   
   .logo-name {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .header-profile svg {
@@ -256,7 +251,7 @@
   
 
   .task-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   
   .task-actions {
@@ -266,15 +261,17 @@
   }
   
   .task-description {
-    font-size: 0.8rem;
-    line-height: 1.4;
+    font-size: 0.75rem;
+    line-height: 1.5;
   }
   
   .task-category-label {
-    font-size: 0.85rem;
-    padding: 0.2rem 0.7rem;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
   }
-  
+  .task-created{
+    font-size: 0.7rem;
+  }
 
   .motivation-section h3 {
     font-size: 1rem;
@@ -294,7 +291,6 @@
   .add-task-btn {
     display: none;
   }
-  
   .add-task-mobile {
     display: inline-flex;
     padding: 0;
@@ -302,12 +298,13 @@
     width: auto;
     padding: 0.6rem 0.75rem;
   }
-  
   .task-list {
     max-width: 400px;
     margin: 0 auto;
   }
-  
+  .modal-content.large{
+    max-width: 90vw;
+  }
   .modal-content {
     padding: 1rem;
     gap: 0;
@@ -316,7 +313,6 @@
   .modal-title {
     font-size: 1.5rem;
   }
-  
   .modal-content-create {
     width: calc(100% - 2rem);
     padding: 1.2rem;
@@ -347,7 +343,6 @@
   .container-total-motivation h4 {
     font-size: 0.8rem;
   }
-  
   .card-pending,
   .card-completed {
     max-width: none;
@@ -364,7 +359,6 @@
   .dashboard-footer p {
     display: none;
   }
-  
   .footer-logo img {
     width: 20px;
   }

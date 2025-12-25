@@ -91,7 +91,7 @@ function TaskCard({ task, onToggleComplete, onDelete, onEdit }) {
           <div className="container-left">
             <div className="task-info">
               <h3 className="task-title">
-                {task.text.length > 25 ? task.text.slice(0, 25) : task.text}
+                {task.text.length > 30 ? task.text.slice(0, 30) : task.text}
               </h3>
               <span className="task-description">
                 {task.description && task.description.trim() !== ""

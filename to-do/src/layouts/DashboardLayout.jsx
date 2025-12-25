@@ -227,13 +227,13 @@ function DashboardLayout({
         </div>
         <p>© 2024 Task Mate. Todos los derechos reservados.</p>
         <div className="icons-footer">
-          <a href="">
+          <a href="#">
             <FaGithub />
           </a>
-          <a href="">
+          <a href="#">
             <BsTwitterX />
           </a>
-          <a href="">
+          <a href="#">
             <FaFacebookF />
           </a>
         </div>
